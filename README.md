@@ -1,6 +1,6 @@
 # VinUniversity Datathon 2026 - Sales Forecasting Project
 
-## 📋 Tổng Quan Dự Án
+## Tổng Quan Dự Án
 
 Dự án này là một bài tập trong cuộc thi **VinUniversity Datathon 2026**, tập trung vào:
 - **Dự báo doanh thu (Revenue) và Giá vốn hàng bán (COGS)** từ 2023-01-01 đến 2024-07-01
@@ -10,7 +10,7 @@ Dự án này là một bài tập trong cuộc thi **VinUniversity Datathon 202
 
 ---
 
-## 📁 Cấu Trúc Thư Mục
+## Cấu Trúc Thư Mục
 
 ```
 vinuni_datathon2026/
@@ -41,7 +41,7 @@ vinuni_datathon2026/
 │   ├── processed_data.csv         # Dữ liệu xử lý cuối cùng
 │   └── ... (các file khác)
 │
-├── edatongquan_preprocessing/     # Preprocessing theo domain
+├── eda_preprocessing/             # Preprocessing theo domain
 │   ├── master/
 │   │   ├── customers.ipynb        # Làm sạch và xử lý dữ liệu customers
 │   │   ├── geography.ipynb        # Làm sạch và xử lý dữ liệu geography
@@ -61,29 +61,29 @@ vinuni_datathon2026/
 │   └── Unioned_dataset.ipynb
 │
 ├── model/                         # Xây dựng và chạy mô hình
-│   ├── chạy_model.ipynb           # Notebook để Feature Engineering và chạy mô hình thử ban đầu
+│   ├── run_model.ipynb            # Notebook để Feature Engineering và chạy mô hình thử ban đầu
 │   ├── processed_data.csv         # Dữ liệu dùng để chạy mô hình baseline
 |   ├── workflow.png               # Sơ đồ quy trình dự báo đệ quy (recursive forecasting workflow)
-|   ├── recursive_forecast.py      # Script dự báo đệ quy chính 
+|   ├── recursive_forecast.py      # Script dự báo đệ quy chính
 |   ├── eda_report.md              # Báo cáo phân tích khám phá dữ liệu (EDA)
 |   ├── eda_feature_selection.py   # Script lựa chọn đặc trưng dựa trên Mutual Information & EDA
-|   └── technical.doc                   # Cách merge dữ liệu cho mô hình
+|   └── technical.doc              # Cách merge dữ liệu cho mô hình
 │
-├── insight_theo_lớp/              # Phân tích insights
+├── insight_by_class/              # Phân tích insights
 │   ├── customer_behavior.ipynb    # Phân tích hành vi khách hàng
 │   ├── product_return_analysis.ipynb
 │   ├── promotion_effectiveness.ipynb
 │   └── supplychain_inventory.ipynb
 │
-├── dashboards/                    # Trực quan hóa dữ liệu (Dựa trên image_3e10d8.png)
+├── dashboard/                     # Trực quan hóa dữ liệu
 │   ├── customer_behavior.pbix     # Dashboard hành vi khách hàng
 │   ├── eda_return_analysis.pbix   # Dashboard phân tích trả hàng
 │   ├── inventory_supplychain.pbix # Dashboard tồn kho & chuỗi cung ứng
 │   └── promotion_effectiveness.pbix # Dashboard hiệu quả khuyến mãi
 │
 ├── baseline.ipynb                 # Mô hình baseline (seasonal avg + trend)
-├── Phần 1 _ MCQ/                  # Bài tập Multiple Choice Questions
-├── luoc_do_csdl/                  # Database design (MySQL Workbench)
+├── part1_mcq/                     # Bài tập Multiple Choice Questions
+├── database_schema/               # Database design (MySQL Workbench)
 │   └── luocdocsdl.mwb
 │
 └── README.md                      # File này
@@ -91,15 +91,15 @@ vinuni_datathon2026/
 
 ---
 
-## 🔄 Quy Trình Xử Lý Dữ Liệu (Data Pipeline)
+## Quy Trình Xử Lý Dữ Liệu (Data Pipeline)
 
 ### Bước 1: Làm sạch dữ liệu (Data Cleaning)
-Các notebook trong `edatongquan_preprocessing/` xử lý dữ liệu từ `raw_datasets/`:
+Các notebook trong `eda_preprocessing/` xử lý dữ liệu từ `raw_datasets/`:
 
 ```
-raw_datasets/{file}.csv 
+raw_datasets/{file}.csv
     ↓
-edatongquan_preprocessing/{domain}/{file}.ipynb
+eda_preprocessing/{domain}/{file}.ipynb
     ↓
 cleaned_datasets/{file}_cleaned.csv
 ```
@@ -121,7 +121,7 @@ cleaned_datasets/processed_data.csv
 ```
 
 ### Bước 3: Phân tích Insights
-Các notebook trong `insight_theo_lớp/` phân tích:
+Các notebook trong `insight_by_class/` phân tích:
 - Customer behavior analysis
 - Product return patterns
 - Promotion effectiveness
@@ -129,7 +129,7 @@ Các notebook trong `insight_theo_lớp/` phân tích:
 
 ### Bước 4: Xây dựng mô hình (Model Building)
 ```
-model/chạy_model.ipynb
+model/run_model.ipynb
     ↓
 Sử dụng processed_data.csv
     ↓
@@ -141,7 +141,7 @@ Sử dụng processed_data.csv
 
 ---
 
-## 🚀 Cách Chạy Lại Toàn Bộ Pipeline
+## Cách Chạy Lại Toàn Bộ Pipeline
 
 ### **Yêu cầu Môi Trường**
 ```
@@ -156,23 +156,23 @@ pip install pandas numpy matplotlib seaborn scikit-learn statsmodels scipy holid
 
 ### **Thứ tự chạy:**
 
-#### **1️⃣ Bước 1: Data Cleaning (Optional - nếu muốn làm lại từ đầu)**
+#### **Bước 1: Data Cleaning (Optional - nếu muốn làm lại từ đầu)**
 ```
 Chạy lần lượt:
-1. edatongquan_preprocessing/master/customers.ipynb
-2. edatongquan_preprocessing/master/geography.ipynb
-3. edatongquan_preprocessing/master/products.ipynb
-4. edatongquan_preprocessing/master/promotions.ipynb
-5. edatongquan_preprocessing/operational/inventory.ipynb
-6. edatongquan_preprocessing/operational/web_traffic.ipynb
-7. edatongquan_preprocessing/analytical/sales.ipynb
-8. edatongquan_preprocessing/transaction/TRANSACTION.ipynb
+1. eda_preprocessing/master/customers.ipynb
+2. eda_preprocessing/master/geography.ipynb
+3. eda_preprocessing/master/products.ipynb
+4. eda_preprocessing/master/promotions.ipynb
+5. eda_preprocessing/operational/inventory.ipynb
+6. eda_preprocessing/operational/web_traffic.ipynb
+7. eda_preprocessing/analytical/sales.ipynb
+8. eda_preprocessing/transaction/TRANSACTION.ipynb
 ```
-✅ **Kết quả:** Tạo ra các file trong `cleaned_datasets/`
+Kết quả: Tạo ra các file trong `cleaned_datasets/`
 
 ---
 
-#### **2️⃣ Bước 2: Data Integration & Feature Engineering** ⭐ **QUAN TRỌNG**
+#### **Bước 2: Data Integration & Feature Engineering** - QUAN TRỌNG
 ```
 process_data/Master.ipynb
 ```
@@ -181,32 +181,32 @@ process_data/Master.ipynb
   ```python
   # Thay vì:
   file_path = '/content/drive/MyDrive/vinuni_datathon2026/cleaned_datasets/products_cleaned.csv'
-  
+
   # Thành:
   file_path = './cleaned_datasets/products_cleaned.csv'
   ```
 
-✅ **Kết quả:** 
+Kết quả:
 - `cleaned_datasets/processed_data.csv` (dữ liệu đã được merge và xử lý)
 
 ---
 
-#### **3️⃣ Bước 3: Insights Analysis (Optional - cho hiểu rõ dữ liệu)**
+#### **Bước 3: Insights Analysis (Optional - cho hiểu rõ dữ liệu)**
 ```
-Chạy một hoặc nhiều notebook trong insight_theo_lớp/:
+Chạy một hoặc nhiều notebook trong insight_by_class/:
 - customer_behavior.ipynb
 - product_return_analysis.ipynb
 - promotion_effectiveness.ipynb
 - supplychain_inventory.ipynb
 ```
 
-✅ **Kết quả:** Biểu đồ, insights và hiểu rõ về dữ liệu
+Kết quả: Biểu đồ, insights và hiểu rõ về dữ liệu
 
 ---
 
-#### **4️⃣ Bước 4: Model Building & Forecasting** ⭐ **CHÍNH**
+#### **Bước 4: Model Building & Forecasting** - CHÍNH
 ```
-model/chạy_model.ipynb
+model/run_model.ipynb
 ```
 
 **Điều chỉnh cần thiết:**
@@ -227,11 +227,11 @@ file_path = './model/processed_data.csv'  # hoặc từ cleaned_datasets/process
 4. Xây dựng mô hình
 5. Dự báo cho 2023-2024
 
-✅ **Kết quả:** Dự báo Revenue & COGS, file submission
+Kết quả: Dự báo Revenue & COGS, file submission
 
 ---
 
-#### **5️⃣ (Optional) Baseline Model**
+#### **(Optional) Baseline Model**
 ```
 baseline.ipynb
 ```
@@ -241,15 +241,15 @@ baseline.ipynb
 - Xây dựng seasonal profile (average cho mỗi ngày trong năm)
 - Scale profile theo trend dự báo
 
-✅ **Kết quả:** Baseline predictions để so sánh
+Kết quả: Baseline predictions để so sánh
 
 ---
 
-## 📊 Các Bảng Dữ Liệu Chính
+## Các Bảng Dữ Liệu Chính
 
 | Bảng | Số hàng | Mô tả |
 |------|--------|-------|
-| **sales.csv** | 4,018 | Doanh thu hàng ngày (Revenue, COGS) - **TARGET** |
+| **sales.csv** | 4,018 | Doanh thu hàng ngày (Revenue, COGS) - TARGET |
 | **customers.csv** | 35,000+ | Khách hàng, địa lý, giới tính, nhóm tuổi, kênh tiếp thị |
 | **orders.csv** | 500,000+ | Chi tiết đơn đặt hàng |
 | **order_items.csv** | 1,000,000+ | Items trong từng đơn hàng |
@@ -265,7 +265,7 @@ baseline.ipynb
 
 ---
 
-## 🎯 Mục Tiêu Chính
+## Mục Tiêu Chính
 
 **Dự báo:**
 - `Revenue` hàng ngày từ 2023-01-01 → 2024-07-01
@@ -276,7 +276,7 @@ baseline.ipynb
 
 ---
 
-## 💡 Gợi ý Cải thiện Mô hình
+## Gợi ý Cải thiện Mô hình
 
 1. **Feature Engineering:**
    - Thêm COVID-19 impact flag
@@ -300,9 +300,9 @@ baseline.ipynb
 
 ---
 
-## 📝 Lưu ý Quan Trọng
+## Lưu ý Quan Trọng
 
-### ⚠️ Đường dẫn tệp
+### Đường dẫn tệp
 Các notebook được viết cho **Google Colab** (với Google Drive). Nếu chạy **local**:
 
 **Tìm và thay thế:**
@@ -314,19 +314,19 @@ file_path = '/content/drive/MyDrive/vinuni_datathon2026/...'
 file_path = './...'
 ```
 
-### ⚠️ Data Leakage
+### Data Leakage
 - **Training set:** Data trước 2021
 - **Test set:** Data từ 2021 onwards (để giả lập mô hình dự báo thực tế)
 - **Submission:** 2023-2024
 
 Không sử dụng thông tin từ future trong feature engineering cho training!
 
-### ⚠️ Thứ tự chạy
-Phải chạy `process_data/Master.ipynb` trước `model/chạy_model.ipynb` để tạo `processed_data.csv`
+### Thứ tự chạy
+Phải chạy `process_data/Master.ipynb` trước `model/run_model.ipynb` để tạo `processed_data.csv`
 
 ---
 
-## 📈 Key Insights (từ EDA)
+## Key Insights (từ EDA)
 
 - Revenue có tính **mùa vụ mạnh** (peaks quanh holiday seasons)
 - **YoY growth rate** ~10-15% (phụ thuộc năm)
@@ -336,24 +336,21 @@ Phải chạy `process_data/Master.ipynb` trước `model/chạy_model.ipynb` đ
 
 ---
 
-## 🤝 Hỗ Trợ & Liên Hệ
+## Hỗ Trợ & Liên Hệ
 
 Nếu có câu hỏi:
-1. Kiểm tra các notebook `edatongquan_preprocessing/` để hiểu data cleaning logic
-2. Xem `insight_theo_lớp/` để hiểu data patterns
-3. Tham khảo docstrings trong `model/chạy_model.ipynb`
+1. Kiểm tra các notebook `eda_preprocessing/` để hiểu data cleaning logic
+2. Xem `insight_by_class/` để hiểu data patterns
+3. Tham khảo docstrings trong `model/run_model.ipynb`
 
 ---
 
-## 📚 Tài Liệu Bổ Sung
+## Tài Liệu Bổ Sung
 
-- `Đề thi Vòng 1.pdf` - Đề bài cuộc thi
-- `Phương pháp phân tích dữ liệu (EDA).pdf` - Hướng dẫn EDA
-- `TASK_.xlsx` - Mô tả task
-- `EDA TASK_.docx` - Chi tiết task EDA
-- `luoc_do_csdl/luocdocsdl.mwb` - Database schema (MySQL Workbench)
+- `De_thi_Vong_1.pdf` - Đề bài cuộc thi
+- `database_schema/luocdocsdl.mwb` - Database schema (MySQL Workbench)
 
 ---
 
 **Cập nhật lần cuối:** Tháng 5 năm 2026  
-**Trạng thái:** ✅ Ready for Datathon Submission
+**Trạng thái:** Ready for Datathon Submission

@@ -70,6 +70,12 @@ vinuni_datathon2026/
 │   ├── promotion_effectiveness.ipynb
 │   └── supplychain_inventory.ipynb
 │
+├── dashboards/                    # Trực quan hóa dữ liệu (Dựa trên image_3e10d8.png)
+│   ├── customer_behavior.pbix     # Dashboard hành vi khách hàng
+│   ├── eda_return_analysis.pbix   # Dashboard phân tích trả hàng
+│   ├── inventory_supplychain.pbix # Dashboard tồn kho & chuỗi cung ứng
+│   └── promotion_effectiveness.pbix # Dashboard hiệu quả khuyến mãi
+│
 ├── baseline.ipynb                 # Mô hình baseline (seasonal avg + trend)
 ├── Phần 1 _ MCQ/                  # Bài tập Multiple Choice Questions
 ├── luoc_do_csdl/                  # Database design (MySQL Workbench)

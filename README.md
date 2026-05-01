@@ -63,6 +63,7 @@ vinuni_datathon2026/
 ├── model/                         # Xây dựng và chạy mô hình
 │   ├── chạy_model.ipynb           # Notebook để Feature Engineering và chạy mô hình thử ban đầu
 │   └── processed_data.csv         # Dữ liệu dùng để chạy mô hình baseline
+|   └── tech.doc                   # Cách merge dữ liệu cho mô hình
 │
 ├── insight_theo_lớp/              # Phân tích insights
 │   ├── customer_behavior.ipynb    # Phân tích hành vi khách hàng
@@ -106,7 +107,7 @@ cleaned_datasets/{file}_cleaned.csv
 
 ### Bước 2: Tổng hợp dữ liệu (Data Merging)
 ```
-process_data/Master.ipynb
+process_data/processed_data.ipynb
     ↓
 - Load tất cả cleaned_datasets/
 - Merge customers + geography + products + ...

@@ -63,11 +63,10 @@ vinuni_datathon2026/
 ├── model/                         # Xây dựng và chạy mô hình
 │   ├── chạy_model.ipynb           # Notebook để Feature Engineering và chạy mô hình thử ban đầu
 │   ├── processed_data.csv         # Dữ liệu dùng để chạy mô hình baseline
-|   ├── workflow.png
-|   ├── recursive_forecast.py
-|   ├── eda_report.md
-|   ├── recursive_forecast.py
-|   ├── eda_feature_selection.py
+|   ├── workflow.png               # Sơ đồ quy trình dự báo đệ quy (recursive forecasting workflow)
+|   ├── recursive_forecast.py      # Script dự báo đệ quy chính 
+|   ├── eda_report.md              # Báo cáo phân tích khám phá dữ liệu (EDA)
+|   ├── eda_feature_selection.py   # Script lựa chọn đặc trưng dựa trên Mutual Information & EDA
 |   └── technical.doc                   # Cách merge dữ liệu cho mô hình
 │
 ├── insight_theo_lớp/              # Phân tích insights
